@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Center(models.Model):
     cif = models.CharField(max_length=9, unique=True)
     name = models.CharField(max_length=50, blank=False, verbose_name="Introduce el nombre del Centro")
-    email = models.EmailField(help_text='Inserta tu email')
+    email = models.EmailField(help_text='Inserta tu e-mail')
     description = models.TextField(blank=False)
     
     def __unicode__(self):
