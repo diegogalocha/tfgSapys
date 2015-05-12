@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% comment %} Aqui van comentarios {% endcomment %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block encabezado %} 
+	<h1>Recetario ;) </h1>
+{% endblock %}
+
+{% block contenido %}
+  <p>
+	  Actualmente tenemos registradas: 
+     {% with total=appointments.count %} 
+		{{total}} appointment{{total|pluralize}}
+	 {% endwith %}
+  </p>
+	<ul>		
+	  {% for dato in appointments %}
+	  <li class="{% cycle 'impar' 'par' %}">{{dato.reason|reason}}</li>
+	  {% empty %}
+	  <li>No hay recetas registradas aún.</li>
+	  {% endfor %}
+	</ul>
+{% endblock %}
