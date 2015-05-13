@@ -2,12 +2,14 @@ from principal.models import Center, UserAccount, Administrator, Teacher, Superv
 from principal.forms import AdministratorForm, AppointmentForm, CenterForm, ClassForm, NotificationForm, ScoreForm, StudentForm, SubjectForm, SupervisorForm, TeacherForm, UserAccountForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.core.mail import EmailMessage
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from principal.forms import LoginForm
+
 
 def index(request):
     return render_to_response('index.html')
@@ -153,4 +155,31 @@ def appointmentList(request):
 def centerList(request):
     centers = Center.objects.all()
     return render_to_response('centerList.html',{'list':centers})
+
+def login_page(request):
+    message = None
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    message = "Te has identificado de modo correcto"
+                else:
+                    message = "Tu usuario esta inactivo"
+            else:
+                message = "Nombre de usuario y/o password incorrecto"
+    else:
+        form = LoginForm()
+    return render_to_response('login.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
+
+def homepage(request):
+    return render_to_response('homepage.html', context_instance=RequestContext(request))
+
+def logout_view(request):
+    logout(request)
+    return redirect('homepage')
 
