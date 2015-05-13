@@ -2,7 +2,7 @@
 <html lang='es'>
 <head>
   <meta charset='utf-8'>
-  <title>Pruebas - {% block titulo %}{% endblock %}</title>
+  <title>{% block titulo %}{% endblock %}</title>
 <!--   <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'> -->
 <!--   <link rel='shortcut icon' href='{{STATIC_URL}}img/icono.png'> -->
 <!--   {% block style_css %}{% endblock %} -->
@@ -10,8 +10,12 @@
 <!--   <script src='{{STATIC_URL}}js/demo.js'></script> -->
 </head>
 <body>
-  <header>
-	{% block encabezado %}{% endblock %}
+  <div id="header">
+		{% if user.is_authenticated %}
+			<p>Bienvenido, <b>{{ user.username }} | <a href="{% url "logout" %}">Logout</a></b> </p>
+		{% else %}
+			<p>Bienvenido. Por favor <a href="{% url "login" %}">log in</a></p>
+		{% endif %}
 	<nav>
 	  <ul id='menu'>
 		  <li><a href='/'>Inicio</a></li>
@@ -20,10 +24,14 @@
     </ul>
 	</nav>
 	<hr>
-  </header>	
-  <section class='contenido'>
+  </div>	
+  <div id="contenido">
 	{% block contenido %}{% endblock %}
-  </section>
+  </div>
+  
+  <div id="navigation">
+  	<p><a href="{% url "homepage" %}">Inicio</a>
+  </div>
   <footer>
 	<p>Proyecto de ejemplo para el curso Django de Maestros del Web 2012</p>
   </footer>
