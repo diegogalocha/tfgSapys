@@ -18,9 +18,9 @@
 		{% endif %}
 	<nav>
 	  <ul id='menu'>
-		  <li><a href='/'>Inicio</a></li>
-		  <li><a href='/appointments'>Citas</a></li>
-		  <li><a href='/new_appointment'>Nueva Cita</a></li>
+		 
+		  <li><a href={% url "appointmentList" %}>Citas</a></li>
+		  <li><a href={% url "new_appointment" %}>Nueva Cita</a></li>
     </ul>
 	</nav>
 	<hr>
