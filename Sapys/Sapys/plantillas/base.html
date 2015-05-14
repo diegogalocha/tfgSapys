@@ -2,7 +2,7 @@
 <html lang='es'>
 <head>
   <meta charset='utf-8'>
-  <title>{% block titulo %}{% endblock %}</title>
+  <title>{% block title %}{% endblock %}</title>
 <!--   <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'> -->
 <!--   <link rel='shortcut icon' href='{{STATIC_URL}}img/icono.png'> -->
 <!--   {% block style_css %}{% endblock %} -->
@@ -11,29 +11,26 @@
 </head>
 <body>
   <div id="header">
+  
+    
 		{% if user.is_authenticated %}
-			<p>Bienvenido, <b>{{ user.username }} | <a href="{% url "logout" %}">Logout</a></b> </p>
+			<div><a href={% url "appointmentList" %}>Appointments</a> | <a href={% url "new_appointment" %}>New appointment</a> | Welcome, <b>{{ user.username }} | <a href="{% url "logout" %}">Logout</a></b></div>
 		{% else %}
-			<p>Bienvenido. Por favor <a href="{% url "login" %}">log in</a></p>
+			<div><a href={% url "appointmentList" %}>Appointments</a> | <a href={% url "new_appointment" %}>New appointment</a> |Welcome. Please <a href="{% url "login" %}">log in</a></div>
 		{% endif %}
-	<nav>
-	  <ul id='menu'>
+	
 		 
-		  <li><a href={% url "appointmentList" %}>Citas</a></li>
-		  <li><a href={% url "new_appointment" %}>Nueva Cita</a></li>
-    </ul>
-	</nav>
-	<hr>
-  </div>	
-  <div id="contenido">
-	{% block contenido %}{% endblock %}
+  </div>
+ 		
+  <div id="content">
+	{% block content %}{% endblock %}
   </div>
   
   <div id="navigation">
-  	<p><a href="{% url "homepage" %}">Inicio</a>
+  	<p><a href="{% url "homepage" %}">Homepage</a>
   </div>
   <footer>
-	<p>Proyecto de ejemplo para el curso Django de Maestros del Web 2012</p>
+	<p>Final Project Sapys</p>
   </footer>
 </body>
 </html>

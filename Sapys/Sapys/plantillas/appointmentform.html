@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% block titulo %}Nueva cita{% endblock %}
-{% block encabezado %} 
+{% block titulo %}New appointment{% endblock %}
+{% block header %} 
 	<h1>Comparte una nueva receta</h1>
 {% endblock %}
-{% block contenido %}
+{% block content %}
 	<form id='formulario' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
 		{{formulario.as_p}}
-		<p><input type='submit' value='Registrar'/></p>
+		<p><input type='submit' value='Register'/></p>
 	</form>
 {% endblock %}

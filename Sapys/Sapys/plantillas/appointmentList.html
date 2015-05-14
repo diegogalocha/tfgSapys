@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block titulo %} Citas registradas {% endblock %}
+{% block title %} Citas registradas {% endblock %}
 
 {% block css %}
   <style>
@@ -12,7 +12,7 @@
   <h1>Nuestras recetas</h1>
 {% endblock %}
 
-{% block contenido %}
-<a href={% url "new_appointment" %}>Agregar una receta</a>
+{% block content %}
+<p><a href={% url "new_appointment" %}>Agregar una receta</a></p>
 
 {% endblock %}

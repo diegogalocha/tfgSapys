@@ -164,17 +164,21 @@ def login_page(request):
             username = request.POST['username']
             password = request.POST['password']
             user = authenticate(username=username, password=password)
+            
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    message = "Te has identificado de modo correcto"
+                    return redirect('homepage')
                 else:
-                    message = "Tu usuario esta inactivo"
+                    message = "Your user is inactive"
             else:
-                message = "Nombre de usuario y/o password incorrecto"
+                message = "Username and/or wrong password"
+        
     else:
         form = LoginForm()
+        
     return render_to_response('login.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
+    
 
 def homepage(request):
     return render_to_response('homepage.html', context_instance=RequestContext(request))

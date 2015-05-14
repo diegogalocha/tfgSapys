@@ -3,8 +3,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Center(models.Model):
     cif = models.CharField(max_length=9, unique=True)
-    name = models.CharField(max_length=50, blank=False, verbose_name="Introduce el nombre del Centro")
-    email = models.EmailField(help_text='Inserta tu e-mail')
+    name = models.CharField(max_length=50, blank=False, verbose_name="Enter the center name")
+    email = models.EmailField(help_text='Enter your email')
     description = models.TextField(blank=False)
     
     def __unicode__(self):
@@ -12,16 +12,16 @@ class Center(models.Model):
     
 class UserAccount(models.Model):
     username = models.CharField(max_length=32, unique=True) #el min_length lo haremos a nivel de formulario
-    password = models.CharField(max_length=32, verbose_name='Contrasena')
+    password = models.CharField(max_length=32, verbose_name='password')
     
     def __unicode__(self):
         return self.username
     
 class Actor(models.Model):
     dni = models.CharField(max_length=9, unique=True)
-    name = models.CharField(max_length=20, blank=False, verbose_name="Introduzca su nombre")
+    name = models.CharField(max_length=20, blank=False, verbose_name="Enter your name")
     surname = models.CharField(max_length=40, blank=False)
-    email = models.EmailField(help_text='Inserta tu email')
+    email = models.EmailField(help_text='Enter your email')
     
     center = models.ForeignKey(Center)
     userAccount = models.ForeignKey(UserAccount, blank=True) #Blank=True por pruebas
@@ -48,7 +48,7 @@ class Supervisor(Actor):
         return self.name
     
 class Appointment(models.Model):
-    date = models.DateField(help_text='dd/mm/aaaa', verbose_name='Fecha de la Cita')
+    date = models.DateField(help_text='dd/mm/aaaa', verbose_name='Appointment date')
     reason = models.TextField(blank=False)
     
     supervisor = models.ForeignKey(Supervisor)
@@ -58,7 +58,7 @@ class Appointment(models.Model):
         return self.teacher.name + self.supervisor.name
     
 class Notification(models.Model):
-    date = models.DateField(help_text='dd/mm/aaaa', verbose_name='Fecha de la Notificacion')
+    date = models.DateField(help_text='dd/mm/aaaa', verbose_name='Notification date')
     reason = models.TextField(blank=False)
     description = models.TextField(blank=False)
     

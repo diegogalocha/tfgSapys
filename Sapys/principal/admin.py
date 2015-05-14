@@ -7,8 +7,18 @@ admin.site.register(Administrator)
 admin.site.register(Teacher)
 admin.site.register(Supervisor)
 admin.site.register(Subject)
-admin.site.register(Class)
-admin.site.register(Score)
-admin.site.register(Notification)
-admin.site.register(Appointment)
+class ClassAdmin(admin.ModelAdmin):
+    list_display = ('course', 'letter')
+admin.site.register(Class, ClassAdmin)
+class ScoreAdmin(admin.ModelAdmin):
+    list_display = ('mark', 'student', 'subject')
+admin.site.register(Score, ScoreAdmin)
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ('date', 'reason')
+admin.site.register(Notification, NotificationAdmin)
+class AppointmentAdmin(admin.ModelAdmin):
+    list_display = ('date', 'reason')
+admin.site.register(Appointment, AppointmentAdmin)
 admin.site.register(Student)
+
+
