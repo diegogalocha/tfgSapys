@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Center(models.Model):
@@ -10,9 +11,9 @@ class Center(models.Model):
     def __unicode__(self):
         return self.name
     
-class UserAccount(models.Model):
-    username = models.CharField(max_length=32, unique=True) #el min_length lo haremos a nivel de formulario
-    password = models.CharField(max_length=32, verbose_name='password')
+class UserAccount(User):
+    username = User.username #el min_length lo haremos a nivel de formulario
+    password = User.password
     
     def __unicode__(self):
         return self.username
