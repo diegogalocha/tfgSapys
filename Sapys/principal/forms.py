@@ -2,7 +2,8 @@
 
 from django.forms import ModelForm
 from django import forms
-from principal.models import Center, UserAccount, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
+from django.contrib.auth.models import User
+from principal.models import Center, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
 
 class AppointmentForm(ModelForm):
     class Meta:
@@ -14,7 +15,7 @@ class CenterForm(ModelForm):
         
 class UserAccountForm(ModelForm):
     class Meta:
-        model = UserAccount
+        model = User
         
 class AdministratorForm(ModelForm):
     class Meta:

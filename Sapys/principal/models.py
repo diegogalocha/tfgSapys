@@ -11,12 +11,7 @@ class Center(models.Model):
     def __unicode__(self):
         return self.name
     
-class UserAccount(User):
-    username = User.username #el min_length lo haremos a nivel de formulario
-    password = User.password
-    
-    def __unicode__(self):
-        return self.username
+
     
 class Actor(models.Model):
     dni = models.CharField(max_length=9, unique=True)
@@ -25,7 +20,7 @@ class Actor(models.Model):
     email = models.EmailField(help_text='Enter your email')
     
     center = models.ForeignKey(Center)
-    userAccount = models.ForeignKey(UserAccount, blank=True) #Blank=True por pruebas
+    userAccount = models.ForeignKey(User, blank=True) #Blank=True por pruebas
     
     class Meta:
         abstract = True

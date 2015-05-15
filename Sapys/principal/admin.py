@@ -1,8 +1,8 @@
-from principal.models import Center, UserAccount, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
+from principal.models import Center, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
 from django.contrib import admin
 
 admin.site.register(Center)
-admin.site.register(UserAccount)
+
 admin.site.register(Administrator)
 admin.site.register(Teacher)
 admin.site.register(Supervisor)

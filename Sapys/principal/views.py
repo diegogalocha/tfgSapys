@@ -1,4 +1,4 @@
-from principal.models import Center, UserAccount, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
+from principal.models import Center, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
 from principal.forms import AdministratorForm, AppointmentForm, CenterForm, ClassForm, NotificationForm, ScoreForm, StudentForm, SubjectForm, SupervisorForm, TeacherForm, UserAccountForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -118,7 +118,7 @@ def new_center(request):
 
 #para listar
 def userAccountList(request):
-    userAccounts = UserAccount.objects.all()
+    userAccounts = User.objects.all()
     return render_to_response('userAccountList.html',{'list':userAccounts})
 
 def studentList(request):
