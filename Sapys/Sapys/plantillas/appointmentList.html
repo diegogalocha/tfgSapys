@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
-{% block title %} Citas registradas {% endblock %}
+{% block title %} Appointments {% endblock %}
 
-{% block css %}
-  <style>
-	img { width:100px; }
-  </style>
-{% endblock %}
-
-
-{% block encabezado %}
-  <h1>Nuestras recetas</h1>
-{% endblock %}
 
 {% block content %}
-<p><a href={% url "new_appointment" %}>Agregar una receta</a></p>
 
+<h3>Appointments</h3>
+<table>
+    <tr>
+        <th>Appointment date</th>
+        <th>Reason</th>
+    </tr>
+    {% for a in appointments %}
+    <tr> 
+        <td>{{ a.date }}</td>
+        <td>{{ a.reason }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<div><a href={% url "new_appointment" %}>New appointment</a>
 {% endblock %}

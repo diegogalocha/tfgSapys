@@ -56,13 +56,13 @@ def new_class(request):
 
 def new_appointment(request):
     if request.method == 'POST':
-        formulario = AppointmentForm(request.POST, request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            return HttpResponseRedirect('/')
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('appointmentList')
     else:
-        formulario = AppointmentForm()
-    return render_to_response('appointmentform.html', {'formulario':formulario}, context_instance = RequestContext(request))
+        form = AppointmentForm()
+    return render_to_response('appointmentform.html', {'forms':form}, context_instance = RequestContext(request))
 
 def new_subject(request):
     if request.method == 'POST':
@@ -150,7 +150,8 @@ def teacherList(request):
 
 def appointmentList(request):
     appointments = Appointment.objects.all()
-    return render_to_response('appointmentList.html',{'list':appointments})
+    
+    return render_to_response('appointmentList.html', {'appointments':appointments})
 
 def centerList(request):
     centers = Center.objects.all()
