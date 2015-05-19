@@ -11,15 +11,14 @@
 </head>
 <body>
   <div id="header">
-  
-    
-		{% if user.is_authenticated %}
-			<div><a href={% url "appointmentList" %}>Appointments</a> | <a href={% url "new_appointment" %}>New appointment</a> | Welcome, <b>{{ user.username }} | <a href="{% url "logout" %}">Logout</a></b></div>
-		{% else %}
-			<div><a href={% url "appointmentList" %}>Appointments</a> | <a href={% url "new_appointment" %}>New appointment</a> |Welcome. Please <a href="{% url "login" %}">log in</a></div>
-		{% endif %}
-	
-		 
+			{% if user.is_authenticated %}
+				<div><a href={% url principal.views.appointmentList %}>Appointments</a> | 
+				<a href={% url principal.views.new_appointment %}>New appointment</a> | 
+				Welcome, <b>{{ user.username }} | 
+				<a href={% url principal.views.logout_view %}>Logout</a></b></div>
+			{% else %}
+				<div><a href={% url principal.views.appointmentList %}>Appointments</a> | <a href={% url principal.views.new_appointment %}>New appointment</a> |Welcome. Please <a href="{% url principal.views.login_page %}">log in</a></div>
+			{% endif %}		 
   </div>
  		
   <div id="content">
@@ -27,7 +26,7 @@
   </div>
   
   <div id="navigation">
-  	<p><a href="{% url "homepage" %}">Homepage</a>
+  	<p><a href="{% url principal.views.homepage %}">Homepage</a>
   </div>
   <footer>
 	<p>Final Project Sapys, 2015</p>
