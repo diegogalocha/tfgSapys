@@ -2,8 +2,8 @@ import os
 from django.contrib.auth.models import User
 
 def populate():    
-    add_user(username = "user1",
-             password = "pass1")
+    add_user(username = "user2",
+             password = "pbkdf2_sha256$10000$6qVV6yvQXDNU$72YJHRHSDszGi9Fxq7vfKo7723TJdv96niQnzk6xDcs=")
             
 def add_user(username,password):
     u = User.objects.get_or_create(username = username,password = password)[0]
