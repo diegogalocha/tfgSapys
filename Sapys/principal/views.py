@@ -29,10 +29,10 @@ def new_notification(request):
         formulario = NotificationForm(request.POST, request.FILES)
         if formulario.is_valid():
             formulario.save()
-            return HttpResponseRedirect('/')
+            return redirect('notificationList')
     else:
         formulario = NotificationForm()
-    return render_to_response('notificationform.html', {'formulario':formulario}, context_instance = RequestContext(request))
+    return render_to_response('notificationform.html', {'forms':formulario}, context_instance = RequestContext(request))
 
 def new_score(request):
     if request.method == 'POST':

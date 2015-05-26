@@ -2,7 +2,7 @@
 {% block title %}New appointment{% endblock %}
 
 {% block content %}
-	<br/>
+	<h3>Create appointment</h3>
 	<form action='' method='post'>{% csrf_token %}
 		{% include "form_snippets.html" %}
 		<p><input type='submit' value='Register'/></p>

@@ -20,6 +20,7 @@ DATABASES = {
         'PASSWORD': 'V3rY=$tR0nG=P@$$w0rd$',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',
+        
     }
 }
 
@@ -158,3 +159,5 @@ LOGGING = {
         },
     }
 }
+
+

@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
+    
 class Center(models.Model):
+    
     cif = models.CharField(max_length=9, unique=True)
     name = models.CharField(max_length=50, blank=False, verbose_name="Enter the center name")
     email = models.EmailField(help_text='Enter your email')
@@ -14,6 +17,7 @@ class Center(models.Model):
 
     
 class Actor(models.Model):
+    
     dni = models.CharField(max_length=9, unique=True)
     name = models.CharField(max_length=20, blank=False, verbose_name="Enter your name")
     surname = models.CharField(max_length=40, blank=False)
