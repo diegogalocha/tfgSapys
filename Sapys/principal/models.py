@@ -74,7 +74,7 @@ class Class(models.Model):
     course = models.CharField(max_length=10)
     letter = models.CharField(max_length=1)
     
-    administrator = models.ForeignKey(Administrator)
+    administrator = models.ForeignKey(Administrator, blank=True)
     teachers = models.ManyToManyField('Teacher', blank = False)
     
     def __unicode__(self):
@@ -88,7 +88,7 @@ class Student(models.Model):
     
     supervisor = models.ForeignKey(Supervisor)
     studentClass = models.ForeignKey(Class)
-    administrator = models.ForeignKey(Administrator)
+    administrator = models.ForeignKey(Administrator, blank=True)
     
     def __unicode__(self):
         return self.name
