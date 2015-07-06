@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Teachers {% endblock %}
+
+
+{% block content %}
+
+<h3>Teachers</h3>
+<table>
+    <tr>
+    	<th></th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+    </tr>
+    {% for t in teachers %}
+    <tr> 
+    	<td><a href={% url 'edit_teacher' t.id %}>Edit</a>&nbsp;</td>
+        <td>{{ t.name }}&nbsp;</td>
+        <td>{{ t.surname }}&nbsp;</td>
+        <td>{{ t.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<div><a href={% url 'new_teacher' %}>New teacher</a>
+{% endblock %}

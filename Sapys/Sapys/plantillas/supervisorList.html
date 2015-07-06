@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Supervisors {% endblock %}
+
+
+{% block content %}
+
+<h3>Supervisors</h3>
+<table>
+    <tr>
+    	<th></th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+    </tr>
+    {% for s in supervisors %}
+    <tr> 
+    	<td><a href={% url 'edit_supervisor' s.id %}>Edit</a>&nbsp;</td>
+        <td>{{ s.email }}&nbsp;</td>
+        <td>{{ s.surname }}&nbsp;</td>
+        <td>{{ s.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<div><a href={% url 'new_supervisor' %}>New supervisor</a>
+{% endblock %}

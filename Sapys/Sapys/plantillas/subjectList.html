@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Subjects {% endblock %}
+
+
+{% block content %}
+
+<h3>Subjects</h3>
+<table>
+    <tr>
+    	<th></th>
+        <th>Name</th>
+       
+    </tr>
+    {% for s in subjects %}
+    <tr> 
+    	<td><a href={% url 'edit_subject' s.id %}>Edit</a>&nbsp;</td>
+        <td>{{ s.name }}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<div><a href={% url 'new_subject' %}>New subject</a>
+{% endblock %}

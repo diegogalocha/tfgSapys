@@ -7,17 +7,19 @@
 <h3>Appointments</h3>
 <table>
     <tr>
-        <th>Appointment date</th>
+    	<th></th>
+        <th>Date</th>
         <th>Reason</th>
     </tr>
     {% for a in appointments %}
     <tr> 
-        <td>{{ a.date }}</td>
+    	<td><a href={% url 'edit_appointment' a.id %}>Edit</a>&nbsp;</td>
+        <td>{{ a.date }}&nbsp;</td>
         <td>{{ a.reason }}</td>
     </tr>
     {% endfor %}
 </table>
-
+<br>
 
 <div><a href={% url 'new_appointment' %}>New appointment</a>
 {% endblock %}

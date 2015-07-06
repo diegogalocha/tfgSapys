@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Classes {% endblock %}
+
+
+{% block content %}
+
+<h3>Classes</h3>
+<table>
+    <tr>
+    	<th></th>
+        <th>Course</th>
+        <th>letter</th>
+    </tr>
+    {% for c in classes %}
+    <tr> 
+    	<td><a href={% url 'edit_class' c.id %}>Edit</a>&nbsp;</td>
+        <td>{{ c.course }}&nbsp;</td>
+        <td>{{ c.letter }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<div><a href={% url 'new_class' %}>New class</a>
+{% endblock %}

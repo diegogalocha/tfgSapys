@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Centers {% endblock %}
+
+
+{% block content %}
+
+<h3>Centers</h3>
+<table>
+    <tr>
+    	<th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Description</th>
+    </tr>
+    {% for c in centers %}
+    <tr> 
+    	<td><a href={% url 'edit_center' c.id %}>Edit</a>&nbsp;</td>
+        <td>{{ c.name }}&nbsp;</td>
+        <td>{{ c.email }}&nbsp;</td>
+        <td>{{ c.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<div><a href={% url 'new_center' %}>New center</a>
+{% endblock %}
