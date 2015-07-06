@@ -42,8 +42,10 @@ def populate():
     add_notification(date = "2015-05-25", reason = "This is the reason of Notification1", description = "This is the description of Notification1", supervisor = super3, teacher = teacher1, administrator = admin1)
     add_notification(date = "2015-05-19", reason = "This is the reason of Notification2", description = "This is the description of Notification2", supervisor = super4, teacher = teacher2, administrator = admin1)
     
-    class1 = add_class(referenceNumber = "100001", course = "Second", letter = "A", teachers = [teacher1, teacher2], administrator = admin1)
-    class2 = add_class(referenceNumber = "100003", course = "Third", letter = "B", teachers = [teacher1, teacher2], administrator = admin1)
+    teachersToClass = [teacher1, teacher2]
+    
+    class1 = add_class(referenceNumber = "100001", course = "Second", letter = "A", teachers = teachersToClass, administrator = admin1)
+    class2 = add_class(referenceNumber = "100003", course = "Third", letter = "B", teachers = teachersToClass, administrator = admin1)
     
     student1 = add_student(dni = "55661122F", name = "Student1", surname = "SurnameStudent1", birthday = "1999-02-25", supervisor = super1, studentClass = class1, administrator = admin1)
     student2 = add_student(dni = "66558877L", name = "Student2", surname = "SurnameStudent2", birthday = "1999-10-15", supervisor = super2, studentClass = class1, administrator = admin1)
@@ -86,7 +88,8 @@ def add_notification(date, reason, description, supervisor, teacher, administrat
     return n
 
 def add_class(referenceNumber, course, letter, teachers, administrator):
-    c = Class.objects.get_or_create(referenceNumber = referenceNumber, course = course, letter = letter, teachers = teachers, administrator = administrator)[0]
+    c = Class.objects.get_or_create(referenceNumber = referenceNumber, course = course, letter = letter, administrator = administrator)[0]
+    c.teachers.add(*Teacher.objects.filter(name__in=[teachers]))
     return c
 
 def add_student(dni, name, surname, birthday, supervisor, studentClass, administrator):
