@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} User Accounts {% endblock %}
+
+
+{% block content %}
+
+<h3>User Accounts</h3>
+<table>
+    <tr>
+    	<th></th>
+        <th>Username</th>
+        <th>Password</th>
+    </tr>
+    {% for u in userAccounts %}
+    <tr> 
+   	 	<td><a href={% url 'edit_userAccount' u.id %}>Edit</a>&nbsp;</td>
+        <td>{{ u.username }}&nbsp;</td>
+        <td>{{ u.password }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+
+<div><a href={% url 'new_userAccount' %}>New user account</a>
+{% endblock %}

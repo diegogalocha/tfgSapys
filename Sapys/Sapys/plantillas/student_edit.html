@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Edit student{% endblock %}
+
+{% block content %}
+	<h3>Edit student</h3>
+	<form action='' method='post'>{% csrf_token %}
+		{% include "form_snippets.html" %}
+		<p><input type='submit' value='Save'/></p>
+	</form>
+{% endblock %}
