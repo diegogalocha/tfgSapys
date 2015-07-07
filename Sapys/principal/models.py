@@ -10,6 +10,7 @@ class Center(models.Model):
     name = models.CharField(max_length=50, blank=False, verbose_name="Enter the center name")
     email = models.EmailField(help_text='Enter your email')
     description = models.TextField(blank=False)
+    provincia = models.TextField(blank=False)
     
     def __unicode__(self):
         return self.name

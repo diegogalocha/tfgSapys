@@ -18,7 +18,10 @@ ce=Center.objects.all()
 ce.delete()
 
 def populate():
-    center1 = add_center(cif = "K96761222", name = "IES Joaquin de Vedruna",email = "joaquindevedruna@gmail.com", description = "Colegio de Educacion Secundaria de la provincia de Sevilla")
+    center1 = add_center(cif = "K96761222", name = "IES Joaquin de Vedruna",email = "joaquindevedruna@gmail.com", description = "Colegio de Educacion Secundaria de la provincia de Sevilla", provincia = "SEVILLA")
+    center2 = add_center(cif = "K96761223", name = "IES Maria Magdalena",email = "mmagdalenaies@gmail.com", description = "Colegio de Educacion Secundaria de la provincia de Sevilla", provincia = "SEVILLA")
+    center3 = add_center(cif = "K96761224", name = "IES Jose Ponce",email = "jponceies@gmail.com", description = "Colegio de Educacion Secundaria de la provincia de Cadiz", provincia = "CADIZ")
+    center4 = add_center(cif = "K96761225", name = "IES Alfredo Ruiz",email = "alfruizies@gmail.com", description = "Colegio de Educacion Secundaria de la provincia de Cadiz", provincia = "CADIZ")
     
     userAdmin = add_user(username = "admin1",password = make_password("admin1",salt=None,hasher='default'),email="admin1@gmail.com")
     userTeacher1 = add_user(username = "teacher1",password = make_password("teacher1",salt=None,hasher='default'),email="teacher1@gmail.com")
@@ -64,8 +67,8 @@ def add_user(username, password, email):
     u = User.objects.get_or_create(username=username, password=password, email=email)[0]
     return u
     
-def add_center(cif, name, email, description):
-    c = Center.objects.get_or_create(cif = cif, name = name, email = email, description = description)[0]
+def add_center(cif, name, email, description, provincia):
+    c = Center.objects.get_or_create(cif = cif, name = name, email = email, description = description, provincia = provincia)[0]
     return c
 
 def add_teacher(dni, name, surname, email, center, userAccount):
