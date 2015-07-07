@@ -128,6 +128,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'principal',
+    'dajaxice',
+    'dajax',
 )
 
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
