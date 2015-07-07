@@ -256,11 +256,13 @@ def teacherList(request):
     teachers = Teacher.objects.all()
     return render_to_response('teacherList.html',{'teachers':teachers})
 
-def appointmentList(request):
-    appointments = Appointment.objects.all()
-    
-    return render_to_response('appointmentList.html', {'appointments':appointments})
 
+def appointmentList(request):
+#     if(request.teacher.is_authenticated()):
+        appointments = Appointment.objects.all()
+    
+        return render_to_response('appointmentList.html', {'appointments':appointments})
+    
 def centerList(request):
     centers = Center.objects.all()
     return render_to_response('centerList.html',{'centers':centers})

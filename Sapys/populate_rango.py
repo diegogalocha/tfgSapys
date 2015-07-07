@@ -11,11 +11,6 @@ django.setup()
 us=User.objects.filter(is_superuser=False)
 us.delete()
 
-te=Teacher.objects.all()
-te.delete()
-
-ce=Center.objects.all()
-ce.delete()
 
 def populate():
     center1 = add_center(cif = "K96761222", name = "IES Joaquin de Vedruna",email = "joaquindevedruna@gmail.com", description = "Colegio de Educacion Secundaria de la provincia de Sevilla", provincia = "SEVILLA")
