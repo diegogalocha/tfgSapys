@@ -1,7 +1,7 @@
 from principal.models import Center, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
 from principal.forms import AdministratorForm, AppointmentForm, CenterForm, ClassForm, NotificationForm, ScoreForm, StudentForm, SubjectForm, SupervisorForm, TeacherForm, UserAccountForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.core.mail import EmailMessage
@@ -9,8 +9,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from principal.forms import LoginForm
-
-
+import json
 
 def new_student(request):
     if request.method == 'POST':

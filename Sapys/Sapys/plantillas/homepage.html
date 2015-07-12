@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Welcome{% endblock %}
 {% block content %}
-		<h3>Welcome, this is our homepage</h3>	
-		<select onchange="Dajaxice.examples.updatecombo(Dajax.process, {'option':this.value})" size="1">
-    		<option value="0">Select...</option>
-    		<option value="0">Sevilla</option>
-   			<option value="1">Cadiz</option>
-   			<option value="2">Malaga</option>
-		</select>
-		<select id="combo2" onchange="" size="1"></select>
-		
-		<div class="alert alert-success" role="alert">HELLO</div>
-		
+	<div id='content'>
+		<div class='col-md-6'>
+			<h1>Bienvenido a SAPYS</h1> <br />
+			<h3>Seleccione la provincia y el centro para identificarse</h3>
+			<select onchange="Dajaxice.examples.updatecombo(Dajax.process, {'option':this.value})" size="1">
+    			<option value="0">Select...</option>
+    			<option value="0">Sevilla</option>
+   				<option value="1">Cadiz</option>
+   				<option value="2">Malaga</option>
+			</select>
+			<select id="combo2" onchange="" size="1"></select>
+		</div>
+		<div class='col-md-6'>
+			
+		</div>
+	</div>		
 {% endblock %}
