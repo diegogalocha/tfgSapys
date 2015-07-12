@@ -5,7 +5,8 @@
 {% block content %}
 
 <h3>Subjects</h3>
-<table>
+<div class="table-responsive">
+<table class="table">
     <tr>
     	<th></th>
         <th>Name</th>
@@ -20,6 +21,6 @@
     {% endfor %}
 </table>
 <br>
-
+</div>
 <div><a href={% url 'new_subject' %}>New subject</a>
 {% endblock %}

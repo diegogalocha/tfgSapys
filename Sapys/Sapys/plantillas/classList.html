@@ -5,7 +5,8 @@
 {% block content %}
 
 <h3>Classes</h3>
-<table>
+<div class="table-responsive">
+<table class="table">
     <tr>
     	<th></th>
         <th>Course</th>
@@ -20,6 +21,7 @@
     {% endfor %}
 </table>
 <br>
+</div>
 
 <div><a href={% url 'new_class' %}>New class</a>
 {% endblock %}

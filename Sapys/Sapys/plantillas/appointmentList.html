@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 {% block title %} Appointments {% endblock %}
 
-
 {% block content %}
-
+	<ul class="nav nav-tabs nav-justified">
+  		<li role="" class="active"><a href="#">Inicio</a></li>
+  		<li role=""><a href="#">Clases</a></li>
+  		<li role=""><a href="#">Profesores</a></li>
+  		<li role=""><a href="#">Notificaciones</a></li>
+  		<li role=""><a href="#">Ajustes</a></li>
+	</ul>
 <h3>Appointments</h3>
-<table>
+<div class="table-responsive">
+<table class="table">
     <tr>
     	<th></th>
         <th>Date</th>
@@ -20,6 +26,7 @@
     {% endfor %}
 </table>
 <br>
+</div>
 
 <div><a href={% url 'new_appointment' %}>New appointment</a>
 {% endblock %}
