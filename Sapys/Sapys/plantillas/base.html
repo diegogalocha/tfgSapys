@@ -3,11 +3,9 @@
 <head>
   <meta charset='utf-8'>
   <title>{% block title %}{% endblock %}</title>
-<!--   <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'> -->
-<!--   <link rel='shortcut icon' href='{{STATIC_URL}}img/icono.png'> -->
-<!--   {% block style_css %}{% endblock %} -->
-<!--   <script src='{{STATIC_URL}}js/jquery-1.7.2.min.js'></script> -->
-<!--   <script src='{{STATIC_URL}}js/demo.js'></script> -->
+  	<link rel='stylesheet' href='{{STATIC_URL}}css/bootstrap.css'>
+  	{% block style_css %}{% endblock %}
+	<script src='{{STATIC_URL}}js/bootstrap.js'></script>
 </head>
 <body>
   <div id="header">
@@ -25,6 +23,7 @@
   </div>
   
   <div id="navigation">
+  	<div class="alert alert-success" role="alert">HELLO</div>
   	<p><a href="{% url 'homepage' %}">Homepage</a>
   </div>
   <footer>
