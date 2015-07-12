@@ -3,31 +3,36 @@
 <head>
   <meta charset='utf-8'>
   <title>{% block title %}{% endblock %}</title>
+  	<link rel='stylesheet' href='{{STATIC_URL}}css/base.css'>
   	<link rel='stylesheet' href='{{STATIC_URL}}css/bootstrap.css'>
   	{% block style_css %}{% endblock %}
 	<script src='{{STATIC_URL}}js/bootstrap.js'></script>
 </head>
 <body>
   <div id="header">
-			{% if user.is_authenticated %}
-				<div><a href={% url 'appointmentList' %}>Appointments</a> |  
-				Welcome, <b>{{ user.username }} | 
-				<a href={% url 'logout' %}>Logout</a></b></div>
-			{% else %}
-				Welcome. Please <a href="{% url 'login' %}">log in</a></div>
-			{% endif %}		 
+  	<div id="navigation" class="col-md-2">
+  		<p><a href="{% url 'homepage' %}">Homepage</a>
+  	</div>
+  	<div id="login" class="col-md-10">
+  		{% if user.is_authenticated %}
+			<div><a href={% url 'appointmentList' %}>Appointments</a> |  
+			Welcome, <b>{{ user.username }} | 
+			<a href={% url 'logout' %}>Logout</a></b></div>
+		{% else %}
+			Welcome. Please <a href="{% url 'login' %}">log in</a></div>
+		{% endif %}
+  	</div>		 
   </div>
- 		
-  <div id="content">
+  
+  <div id="content" class="col-md-12">
 	{% block content %}{% endblock %}
   </div>
   
-  <div id="navigation">
-  	<div class="alert alert-success" role="alert">HELLO</div>
-  	<p><a href="{% url 'homepage' %}">Homepage</a>
-  </div>
-  <footer>
-	<p>Final Project Sapys, 2015</p>
+  <footer class="col-md-12" sytle="position: bottom;">
+	| <a href="">Quiénes somos</a> |
+	<a href="">Contacto</a> |
+	<a href="">Condiciones de uso</a> |
+	<a href="">Política de privacidad y cookies</a> |
   </footer>
 </body>
 </html>
