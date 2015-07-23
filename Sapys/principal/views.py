@@ -10,6 +10,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from principal.forms import LoginForm
 import json
+from datetime import datetime
+from django.views.generic.list import ListView
 
 def new_student(request):
     if request.method == 'POST':
@@ -52,6 +54,7 @@ def new_class(request):
     return render_to_response('class_new.html', {'forms':form}, context_instance = RequestContext(request))
 
 def new_appointment(request):
+    
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
@@ -226,45 +229,50 @@ def edit_center(request, center_id):
 #para listar
 def userAccountList(request):
     userAccounts = User.objects.all()
-    return render_to_response('userAccountList.html',{'userAccounts':userAccounts})
+    return render_to_response('userAccountList.html',{'userAccounts':userAccounts}, context_instance = RequestContext(request))
 
 def studentList(request):
     students = Student.objects.all()
-    return render_to_response('studentList.html',{'students':students})
+    return render_to_response('studentList.html',{'students':students}, context_instance = RequestContext(request))
 
 def notificationList(request):
     notifications = Notification.objects.all()
-    return render_to_response('notificationList.html',{'notifications':notifications})
+    return render_to_response('notificationList.html',{'notifications':notifications}, context_instance = RequestContext(request))
 
 def scoreList(request):
     scores = Score.objects.all()
-    return render_to_response('scoreList.html',{'scores':scores})
+    return render_to_response('scoreList.html',{'scores':scores}, context_instance = RequestContext(request))
 def classList(request):
     classes = Class.objects.all()
-    return render_to_response('classList.html',{'classes':classes})
+    return render_to_response('classList.html',{'classes':classes}, context_instance = RequestContext(request))
 
 def subjectList(request):
     subjects = Subject.objects.all()
-    return render_to_response('subjectList.html',{'subjects':subjects})
+    return render_to_response('subjectList.html',{'subjects':subjects}, context_instance = RequestContext(request))
 
 def supervisorList(request):
     supervisors = Supervisor.objects.all()
-    return render_to_response('supervisorList.html',{'supervisors':supervisors})
+    return render_to_response('supervisorList.html',{'supervisors':supervisors}, context_instance = RequestContext(request))
 
 def teacherList(request):
     teachers = Teacher.objects.all()
-    return render_to_response('teacherList.html',{'teachers':teachers})
+    return render_to_response('teacherList.html',{'teachers':teachers}, context_instance = RequestContext(request))
 
-
+# def get_queryset(self):
+#         self.supervisor = get_object_or_404(Supervisor, name__iexact=self.args[0])
+#         return Appointment.objects.filter(supervisor=self.supervisor)
+  
 def appointmentList(request):
 #     if(request.teacher.is_authenticated()):
-        appointments = Appointment.objects.all()
+        user=request.user
+        appointments = Appointment.objects.filter(user)
     
-        return render_to_response('appointmentList.html', {'appointments':appointments})
+        return render_to_response('appointmentList.html', {'appointments':appointments}, context_instance = RequestContext(request))
     
+
 def centerList(request):
     centers = Center.objects.all()
-    return render_to_response('centerList.html',{'centers':centers})
+    return render_to_response('centerList.html',{'centers':centers}, context_instance = RequestContext(request))
 
 def login_page(request):
     message = None

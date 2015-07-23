@@ -1,6 +1,8 @@
 #Aquí pondremos todas las funciones de AJAX que necesitemos
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
+from principal.models import Appointment
+
 
 @dajaxice_register
 def updatecombo(request, option):
@@ -27,3 +29,4 @@ def updatecombo2(request, option):
 
     dajax.assign('#combo2', 'innerHTML', ''.join(out))
     return dajax.json()
+

@@ -4,11 +4,13 @@ from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.models import User
 from principal.models import Center, Administrator, Teacher, Supervisor, Subject, Class, Score, Notification, Appointment, Student
+from django.contrib.admin import widgets
 
 class AppointmentForm(ModelForm):
     class Meta:
         model = Appointment
         exclude = ()
+           
 class CenterForm(ModelForm):
     class Meta:
         model = Center
@@ -17,6 +19,7 @@ class UserAccountForm(ModelForm):
     class Meta:
         model = User
         exclude = ()
+    
 class AdministratorForm(ModelForm):
     class Meta:
         model = Administrator

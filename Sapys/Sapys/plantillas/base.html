@@ -7,6 +7,7 @@
   	<link rel='stylesheet' href='/static/css/bootstrap.css'>
   	{% block style_css %}{% endblock %}
 	<script src='{{STATIC_URL}}js/bootstrap.js'></script>
+	
 </head>
 <body>
   <div id="header">
@@ -15,7 +16,7 @@
   	</div>
   	<div id="login" class="col-md-10">
   		{% if user.is_authenticated %}
-			<div><a href={% url 'appointmentList' %}>Appointments</a> |  
+			<div><a href={% url 'appointmentList' %}>Appointments</a> | <a href={% url 'centerList' %}>Centers</a> |
 			Welcome, <b>{{ user.username }} | 
 			<a href={% url 'logout' %}>Logout</a></b></div>
 		{% else %}
@@ -27,6 +28,7 @@
   <div id="content" class="col-md-12">
 	{% block content %}{% endblock %}
   </div>
+  
   
   <footer class="col-md-12" sytle="position: bottom;">
 	| <a href="">Quiénes somos</a> |
