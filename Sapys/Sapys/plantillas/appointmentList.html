@@ -19,12 +19,19 @@
         <th>Date</th>
         <th>Reason</th>
     </tr>
-    {% for a in appointments %}
-    <tr> 
-    	<td><a href={% url 'edit_appointment' a.id %}>Edit</a>&nbsp;</td>
-        <td>{{ a.date }}&nbsp;</td>
-        <td>{{ a.reason }}</td>
-    </tr>
+    {% for u in users %}
+    	{% for t in teachers %}
+    		{% if u.email == t.email %}
+    			{% for a in appointments %}
+    				<tr> 
+    					<td><a href={% url 'edit_appointment' a.id %}>Edit</a>&nbsp;</td>
+    					<td>{{ a.teacher }}</td>
+    				    <td>{{ a.date }}&nbsp;</td>
+    				    <td>{{ a.reason }}</td>
+   					 </tr>
+    			{% endfor %}
+    		{% endif %}
+    	{% endfor %}
     {% endfor %}
 </table>
 <br>

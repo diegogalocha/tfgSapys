@@ -13,6 +13,15 @@ import json
 from datetime import datetime
 from django.views.generic.list import ListView
 
+def appointmentList(request):
+    appointments = Appointment.objects.all()
+    teachers = Teacher.objects.all()
+    users = User.objects.all()
+    return render_to_response('appointmentList.html', {'appointments':appointments, 'teachers':teachers, 'users':users,}, context_instance = RequestContext(request))
+    
+#    if(request.teacher.is_authenticated()):
+#    user=request.user
+
 def new_student(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
@@ -262,14 +271,6 @@ def teacherList(request):
 #         self.supervisor = get_object_or_404(Supervisor, name__iexact=self.args[0])
 #         return Appointment.objects.filter(supervisor=self.supervisor)
   
-def appointmentList(request):
-#     if(request.teacher.is_authenticated()):
-        user=request.user
-        appointments = Appointment.objects.filter(user)
-    
-        return render_to_response('appointmentList.html', {'appointments':appointments}, context_instance = RequestContext(request))
-    
-
 def centerList(request):
     centers = Center.objects.all()
     return render_to_response('centerList.html',{'centers':centers}, context_instance = RequestContext(request))
