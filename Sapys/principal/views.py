@@ -278,53 +278,31 @@ def centerList(request):
     centers = Center.objects.all()
     return render_to_response('centerList.html',{'centers':centers}, context_instance = RequestContext(request))
 
-# def login_page(request):
-#     message = None
-#     if request.method == "POST":
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             username = request.POST['username']
-#             password = request.POST['password']
-#             user = authenticate(username=username, password=password)
-#             
-#             if user is not None:
-#                 if user.is_active:
-#                     login(request, user)
-#                     return redirect('homepage')
-#                 else:
-#                     message = "Your user is inactive"
-#             else:
-#                 message = "Username and/or wrong password"
-#         
-#     else:
-#         form = LoginForm()
-#         
-#     return render_to_response('login.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
-#     
-
-def login(request):
-    if 'userID' in request.session:
-        return HttpResponseRedirect(reverse('homepage.html'))
+def login_page(request):
+    message = None
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+             
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('homepage')
+                else:
+                    message = "Your user is inactive"
+            else:
+                message = "Username and/or wrong password"
+         
     else:
-        try:
-            user = User.objects.get(user=request.POST['usuario'])
-        except ObjectDoesNotExist:
-            context = {'Tu usuario contraseña is Niiuuulll'}
-            return render_to_response(request, 'login.html', context)
-        password = hashlib.sha1(request.POST['pass']).hexdigest()
-        if user.password == password:
-            request.session['userID'] = user.id
-            return HttpResponseRedirect(reverse('homepage.html'))
-        else:
-            context = {'ERROR'}
-            return render_to_response(request, 'login.html', context)
-        
-def logout(request):
-    try:
-        del request.session['userID']
-    except KeyError:
-        pass
-    return HttpResponseRedirect(reverse('homepage.html'))            
+        form = LoginForm()
+         
+    return render_to_response('login.html', {'message': message, 'form': form}, context_instance=RequestContext(request))
+     
+
+           
 
 def homepage(request):
     return render_to_response('homepage.html', context_instance=RequestContext(request))
