@@ -21,9 +21,6 @@ def appointmentList(request):
     teachers = Teacher.objects.all()
     users = User.objects.all()
     return render_to_response('appointmentList.html', {'appointments':appointments, 'teachers':teachers, 'users':users,}, context_instance = RequestContext(request))
-    
-#    if(request.teacher.is_authenticated()):
-#    user=request.user
 
 def new_student(request):
     if request.method == 'POST':
@@ -249,7 +246,7 @@ def studentList(request):
 
 def notificationList(request):
     notifications = Notification.objects.all()
-    return render_to_response('notificationList.html',{'notifications':notifications}, context_instance = RequestContext(request))
+    return render_to_response('indexTeacher.html',{'notifications':notifications}, context_instance = RequestContext(request))
 
 def scoreList(request):
     scores = Score.objects.all()
